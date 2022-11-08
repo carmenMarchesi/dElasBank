@@ -12,7 +12,8 @@ public class Transferencia {
     private Double valor;
     private Date dataTransf;
 
-    public Transferencia(Integer idTransacao, Cliente cliente, Integer codBancoDestino, String agDestino, String contaDestino, Double valor, Date dataTransf) {
+    public Transferencia(Integer idTransacao, Cliente cliente, Integer codBancoDestino,
+                         String agDestino, String contaDestino, Double valor, Date dataTransf) {
         this.idTransacao = idTransacao;
         this.cliente = cliente;
         this.codBancoDestino = codBancoDestino;
@@ -23,14 +24,17 @@ public class Transferencia {
     }
 
     public Integer getIdTransacao() {
+
         return idTransacao;
     }
 
     public void setIdTransacao(Integer idTransacao) {
+
         this.idTransacao = idTransacao;
     }
 
     public Integer getCodBancoDestino() {
+
         return codBancoDestino;
     }
 
@@ -39,34 +43,42 @@ public class Transferencia {
     }
 
     public String getAgDestino() {
+
         return agDestino;
     }
 
     public void setAgDestino(String agDestino) {
+
         this.agDestino = agDestino;
     }
 
     public String getContaDestino() {
+
         return contaDestino;
     }
 
     public void setContaDestino(String contaDestino) {
+
         this.contaDestino = contaDestino;
     }
 
     public Double getValor() {
+
         return valor;
     }
 
     public void setValor(Double valor) {
+
         this.valor = valor;
     }
 
     public Date getDataTransf() {
+
         return dataTransf;
     }
 
     public void setDataTransf(Date dataTransf) {
+
         this.dataTransf = dataTransf;
     }
 }
