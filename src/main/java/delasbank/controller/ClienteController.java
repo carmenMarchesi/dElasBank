@@ -1,15 +1,36 @@
 package delasbank.controller;
 
-import net.bytebuddy.asm.Advice;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
-    @GetMapping("/")
-    public String Cliente(){
-       return "Fazendo um teste";
+
+    @PostMapping("/novo")
+    public void cadastrarCliente(){
+
     }
+
+    @GetMapping("/todos")
+    public void listarClientes(){
+
+    }
+
+    @GetMapping("/{id}")
+    public void listarClienteId(){
+
+    }
+
+    @PutMapping("/alterar/{id}")
+    public void editarCliente(){
+
+    }
+
+    @DeleteMapping("/deletar")
+    public void deletarCliente(){
+
+    }
+
+
+
 }

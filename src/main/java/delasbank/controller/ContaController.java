@@ -1,28 +1,29 @@
 package delasbank.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/conta")
 public class ContaController {
 
-    @GetMapping("/")
-    public String inicial(){
-        return "Só digitei conta, sem requisitar nada!";
+    @GetMapping("/dados")
+    public String dadosConta(){
+        return "estou aqui, nos dados";
     }
 
-    @GetMapping("/mensagem")
-    public String conta(){
-        return "Entrei na parte de mensagem, do controller conta!";
+    @PostMapping("/cadastrar")
+    public void criarConta(){
+
     }
 
-    @GetMapping("/detalhes")
-    public String detalhes(){
+    @PutMapping("/alterar")
+    public void editarConta(){
 
-        return "Detalhes da conta";
     }
 
+    @DeleteMapping("/excluir")
+    public void deletarConta(){
+
+    }
 
 }
