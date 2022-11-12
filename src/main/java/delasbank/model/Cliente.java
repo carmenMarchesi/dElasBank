@@ -1,19 +1,27 @@
 package delasbank.model;
 
+import javax.persistence.Embedded;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 public class Cliente {
 
-    private Integer idCliente;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idCliente;
+
     private String nome;
     private String  telefone;
     private Date dtNascimento;
     private String sexo;
     private String cpf;
     private String email;
+    @Embedded
     private Endereco endereco;
 
-    public Integer getIdCliente() {
+    public Long getIdCliente() {
 
         return idCliente;
     }
