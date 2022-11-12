@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 public class ContaController {
 
     @GetMapping("/dados")
-    public String dadosConta(){
-        return "estou aqui, nos dados";
+    public void dadosConta(){
+
     }
 
     @PostMapping("/cadastrar")
