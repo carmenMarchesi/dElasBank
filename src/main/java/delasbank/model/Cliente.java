@@ -1,9 +1,6 @@
 package delasbank.model;
 
-import javax.persistence.Embedded;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 public class Cliente {
@@ -18,6 +15,8 @@ public class Cliente {
     private String sexo;
     private String cpf;
     private String email;
+
+    @OneToOne
     @Embedded
     private Endereco endereco;
 

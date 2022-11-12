@@ -3,6 +3,7 @@ package delasbank.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Date;
 
 public class Transferencia {
@@ -10,6 +11,7 @@ public class Transferencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTransacao;
+    @OneToMany
     private Cliente cliente;
     private Integer codBancoDestino;
     private String agDestino;
