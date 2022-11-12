@@ -17,6 +17,9 @@ public class Transferencia {
     private Double valor;
     private Date dataTransf;
 
+    public Transferencia() {
+    }
+
     public Transferencia(Long idTransacao, Cliente cliente, Integer codBancoDestino,
                          String agDestino, String contaDestino, Double valor, Date dataTransf) {
         this.idTransacao = idTransacao;

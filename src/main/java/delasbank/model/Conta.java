@@ -18,6 +18,9 @@ public class Conta {
 
     private Cliente cliente;
 
+    public Conta() {
+    }
+
     public Conta(Long idConta, String tipo, String agencia, Double saldo,
                  String numConta, Integer cod_banco) {
         this.idConta = idConta;
@@ -86,5 +89,13 @@ public class Conta {
     public void setCod_banco(Integer cod_banco) {
 
         this.cod_banco = cod_banco;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
