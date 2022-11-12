@@ -3,6 +3,7 @@ package delasbank.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 public class Conta {
 
@@ -16,7 +17,11 @@ public class Conta {
     private String numConta;
     private Integer cod_banco;
 
+    @OneToOne
     private Cliente cliente;
+
+    public Conta() {
+    }
 
     public Conta(Long idConta, String tipo, String agencia, Double saldo,
                  String numConta, Integer cod_banco) {
@@ -86,5 +91,13 @@ public class Conta {
     public void setCod_banco(Integer cod_banco) {
 
         this.cod_banco = cod_banco;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

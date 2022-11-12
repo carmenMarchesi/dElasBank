@@ -2,11 +2,16 @@ package delasbank.controller;
 
 import delasbank.model.Cliente;
 import delasbank.model.Endereco;
+import delasbank.service.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController {
+
+    @Autowired
+    private ClienteService s;
 
     @PostMapping("/novo")
     public void cadastrarCliente(){

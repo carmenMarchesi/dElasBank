@@ -20,6 +20,20 @@ public class Endereco {
     private String cidade;
     private String estado;
 
+    public Endereco() {
+    }
+
+    public Endereco(Long idEndereco, String cep, String rua, Integer numero, String complemento, String bairro, String cidade, String estado) {
+        this.idEndereco = idEndereco;
+        this.cep = cep;
+        this.rua = rua;
+        this.numero = numero;
+        this.complemento = complemento;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+    }
+
     public Long getIdEndereco() {
 
         return idEndereco;
