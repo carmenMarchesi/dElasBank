@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 public class ContaController {
 
     @GetMapping("/dados")
-    public void dadosConta(){
-
+    public String dadosConta(){
+        return "estou aqui, nos dados";
     }
 
     @PostMapping("/cadastrar")
@@ -25,5 +25,6 @@ public class ContaController {
     public void deletarConta(){
 
     }
+
 
 }

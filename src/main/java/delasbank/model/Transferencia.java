@@ -1,10 +1,15 @@
 package delasbank.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Date;
 
 public class Transferencia {
 
-    private Integer idTransacao;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idTransacao;
     private Cliente cliente;
     private Integer codBancoDestino;
     private String agDestino;
@@ -12,7 +17,8 @@ public class Transferencia {
     private Double valor;
     private Date dataTransf;
 
-    public Transferencia(Integer idTransacao, Cliente cliente, Integer codBancoDestino, String agDestino, String contaDestino, Double valor, Date dataTransf) {
+    public Transferencia(Long idTransacao, Cliente cliente, Integer codBancoDestino,
+                         String agDestino, String contaDestino, Double valor, Date dataTransf) {
         this.idTransacao = idTransacao;
         this.cliente = cliente;
         this.codBancoDestino = codBancoDestino;
@@ -22,15 +28,18 @@ public class Transferencia {
         this.dataTransf = dataTransf;
     }
 
-    public Integer getIdTransacao() {
+    public Long getIdTransacao() {
+
         return idTransacao;
     }
 
-    public void setIdTransacao(Integer idTransacao) {
+    public void setIdTransacao(Long idTransacao) {
+
         this.idTransacao = idTransacao;
     }
 
     public Integer getCodBancoDestino() {
+
         return codBancoDestino;
     }
 
@@ -39,34 +48,44 @@ public class Transferencia {
     }
 
     public String getAgDestino() {
+
         return agDestino;
     }
 
     public void setAgDestino(String agDestino) {
+
         this.agDestino = agDestino;
     }
 
     public String getContaDestino() {
+
         return contaDestino;
     }
 
     public void setContaDestino(String contaDestino) {
+
         this.contaDestino = contaDestino;
     }
 
     public Double getValor() {
+
         return valor;
     }
 
     public void setValor(Double valor) {
+
         this.valor = valor;
     }
 
     public Date getDataTransf() {
+
         return dataTransf;
     }
 
     public void setDataTransf(Date dataTransf) {
+
         this.dataTransf = dataTransf;
     }
+
+
 }
