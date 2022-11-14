@@ -1,9 +1,6 @@
 package delasbank.model;
 
-import javax.persistence.Embedded;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 public class Cliente {
@@ -18,8 +15,24 @@ public class Cliente {
     private String sexo;
     private String cpf;
     private String email;
+
+    @OneToOne
     @Embedded
     private Endereco endereco;
+
+    public Cliente() {
+    }
+
+    public Cliente(Long idCliente, String nome, String telefone, Date dtNascimento, String sexo, String cpf, String email, Endereco endereco) {
+        this.idCliente = idCliente;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.dtNascimento = dtNascimento;
+        this.sexo = sexo;
+        this.cpf = cpf;
+        this.email = email;
+        this.endereco = endereco;
+    }
 
     public Long getIdCliente() {
 
