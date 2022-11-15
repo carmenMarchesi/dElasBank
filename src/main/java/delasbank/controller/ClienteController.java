@@ -14,7 +14,12 @@ public class ClienteController {
     private ClienteService s;
 
     @PostMapping("/novo")
-    public void cadastrarCliente(){
+    public String cadastrarCliente(@RequestBody Cliente cliente){
+        System.out.println(cliente.getNome());
+        System.out.println(cliente.getEmail());
+        System.out.println(cliente.getDtNascimento());
+
+        return "Cadastro";
 
     }
 
@@ -40,7 +45,7 @@ public class ClienteController {
     }
 
     @PutMapping("/alterar/{id}")
-    public void editarCliente(){
+    public void editarCliente(@RequestBody Cliente cliente){
 
     }
 
