@@ -1,6 +1,8 @@
 package delasbank.service;
 
 import delasbank.model.Transferencia;
+import delasbank.repository.TransferenciaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,13 +10,14 @@ import java.util.List;
 @Service
 public class TransferenciaService {
 
-    public void listaTransferencias(){
-        //Transferencia findById(Long id);
+    @Autowired
+    private TransferenciaRepository tr;
 
-
+    public List<Transferencia> listaTransferencias(){
+        return tr.findAll();
     }
 
-    public void realizarTransferencia(){
-
+    public Transferencia realizarTransferencia(Transferencia transf){
+        return tr.save(transf);
     }
 }
