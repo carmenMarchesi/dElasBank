@@ -1,10 +1,10 @@
 package delasbank.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.Objects;
 
+
+@Entity
 public class Conta {
 
     @Id
@@ -94,10 +94,25 @@ public class Conta {
     }
 
     public Cliente getCliente() {
+
         return cliente;
     }
 
     public void setCliente(Cliente cliente) {
+
         this.cliente = cliente;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Conta conta = (Conta) o;
+        return idConta.equals(conta.idConta);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idConta);
     }
 }

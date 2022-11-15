@@ -3,5 +3,8 @@ package delasbank.repository;
 import delasbank.model.Endereco;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EnderecoRepository extends JpaRepository <Endereco, Long>  {
-}
+import javax.persistence.Entity;
+
+//
+//public interface EnderecoRepository extends JpaRepository <Endereco, Long>  {
+//}

@@ -23,7 +23,7 @@ public class TransferenciaController {
     }
 
     @PostMapping("/transferir")
-   public void realizarTransferencia(){
+   public void realizarTransferencia(@RequestBody Transferencia transferencia){
 
    }
 

@@ -1,15 +1,23 @@
 package delasbank.service;
 
+import delasbank.model.Conta;
+import delasbank.repository.ContaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class ContaService {
+
+    @Autowired
+    private ContaRepository crp;
 
     public void dadosConta(){
 
     }
 
-    public void criarConta(){
+    public Conta criarConta(Conta conta){
+        return crp.save(conta);
 
     }
 
@@ -17,7 +25,8 @@ public class ContaService {
 
     }
 
-    public void deletarConta(){
+    public void deletarConta(Long id){
+        crp.deleteById(id);
 
     }
 }
