@@ -1,10 +1,10 @@
 package delasbank.service;
 
 import delasbank.model.Cliente;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
+@Service
 public class ClienteService {
 
     public void cadastrarCliente(){

@@ -1,6 +1,7 @@
 package delasbank.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Cliente {
@@ -11,7 +12,7 @@ public class Cliente {
 
     private String nome;
     private String  telefone;
-    private Date dtNascimento;
+    private LocalDate dtNascimento;
     private String sexo;
     private String cpf;
     private String email;
@@ -23,7 +24,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Long idCliente, String nome, String telefone, Date dtNascimento, String sexo, String cpf, String email, Endereco endereco) {
+    public Cliente(Long idCliente, String nome, String telefone, LocalDate dtNascimento, String sexo, String cpf, String email, Endereco endereco) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.telefone = telefone;
@@ -59,12 +60,12 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Date getDtNascimento() {
+    public LocalDate getDtNascimento() {
 
         return dtNascimento;
     }
 
-    public void setDtNascimento(Date dtNascimento) {
+    public void setDtNascimento(LocalDate dtNascimento) {
 
         this.dtNascimento = dtNascimento;
     }
