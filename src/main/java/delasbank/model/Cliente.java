@@ -3,7 +3,9 @@ package delasbank.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Objects;
 
+@Entity
 public class Cliente {
 
     @Id
@@ -17,7 +19,6 @@ public class Cliente {
     private String cpf;
     private String email;
 
-    @OneToOne
     @Embedded
     private Endereco endereco;
 
@@ -110,5 +111,16 @@ public class Cliente {
         this.endereco = endereco;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return idCliente.equals(cliente.idCliente);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(idCliente);
+    }
 }
