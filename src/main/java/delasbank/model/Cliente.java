@@ -1,8 +1,13 @@
 package delasbank.model;
 
-import javax.persistence.*;
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Objects;
+
+@Entity
 public class Cliente {
 
     @Id
@@ -11,19 +16,18 @@ public class Cliente {
 
     private String nome;
     private String  telefone;
-    private Date dtNascimento;
+    private LocalDate dtNascimento;
     private String sexo;
     private String cpf;
     private String email;
 
-    @OneToOne
     @Embedded
     private Endereco endereco;
 
     public Cliente() {
     }
 
-    public Cliente(Long idCliente, String nome, String telefone, Date dtNascimento, String sexo, String cpf, String email, Endereco endereco) {
+    public Cliente(Long idCliente, String nome, String telefone, LocalDate dtNascimento, String sexo, String cpf, String email, Endereco endereco) {
         this.idCliente = idCliente;
         this.nome = nome;
         this.telefone = telefone;
@@ -59,12 +63,12 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Date getDtNascimento() {
+    public LocalDate getDtNascimento() {
 
         return dtNascimento;
     }
 
-    public void setDtNascimento(Date dtNascimento) {
+    public void setDtNascimento(LocalDate dtNascimento) {
 
         this.dtNascimento = dtNascimento;
     }
@@ -109,5 +113,16 @@ public class Cliente {
         this.endereco = endereco;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return idCliente.equals(cliente.idCliente);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(idCliente);
+    }
 }

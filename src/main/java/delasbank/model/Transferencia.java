@@ -1,17 +1,16 @@
 package delasbank.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
+@Entity
 public class Transferencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTransacao;
-    @OneToMany
+    @ManyToOne
     private Cliente cliente;
     private Integer codBancoDestino;
     private String agDestino;
@@ -92,5 +91,16 @@ public class Transferencia {
         this.dataTransf = dataTransf;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transferencia that = (Transferencia) o;
+        return idTransacao.equals(that.idTransacao);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(idTransacao);
+    }
 }

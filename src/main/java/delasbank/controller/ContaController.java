@@ -35,12 +35,12 @@ public class ContaController {
     }
 
     @PostMapping("/cadastrar")
-    public void criarConta(){
-
+    public String criarConta(@RequestBody Conta conta){
+        return "Conta criada";
     }
 
     @PutMapping("/alterar")
-    public void editarConta(){
+    public void editarConta(@RequestBody Conta conta){
 
     }
 

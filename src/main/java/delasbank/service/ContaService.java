@@ -1,23 +1,31 @@
 package delasbank.service;
 
-import org.springframework.stereotype.Component;
+import delasbank.model.Conta;
+import delasbank.repository.ContaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.Optional;
+
+@Service
 public class ContaService {
 
-    public void dadosConta(){
+    @Autowired
+    private ContaRepository crp;
 
+    public Optional<Conta> dadosConta(Long id){
+        return crp.findById(id);
     }
 
-    public void criarConta(){
-
+    public Conta criarConta(Conta conta){
+        return crp.save(conta);
     }
 
-    public void editarConta(){
-
+    public Conta editarConta(Conta conta){
+        return crp.save(conta);
     }
 
-    public void deletarConta(){
-
+    public void deletarConta(Long id){
+        crp.deleteById(id);
     }
 }
