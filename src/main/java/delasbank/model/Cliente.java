@@ -1,15 +1,17 @@
 package delasbank.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.Objects;
+
 
 @Entity
 public class Cliente {
 
+    @JsonIgnore   // confirmar local da annotation jsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;
