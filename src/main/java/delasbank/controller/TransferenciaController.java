@@ -2,7 +2,7 @@ package delasbank.controller;
 
 import delasbank.model.Transferencia;
 import delasbank.service.TransferenciaService;
-import org.hibernate.mapping.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

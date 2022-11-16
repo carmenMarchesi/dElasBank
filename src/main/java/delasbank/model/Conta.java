@@ -12,7 +12,6 @@ public class Conta {
     private Long idConta;
     private String tipo;
     private String agencia;
-
     private Double saldo;
     private String numConta;
     private Integer cod_banco;

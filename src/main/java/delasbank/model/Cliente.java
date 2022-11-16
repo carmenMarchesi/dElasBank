@@ -1,14 +1,7 @@
 package delasbank.model;
 
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -20,16 +13,13 @@ public class Cliente {
 
     private String nome;
     private String  telefone;
-
     private LocalDate dtNascimento;
-
     private String sexo;
     private String cpf;
     private String email;
-
-
     @Embedded
     private Endereco endereco;
+
 
     public Cliente() {
     }
