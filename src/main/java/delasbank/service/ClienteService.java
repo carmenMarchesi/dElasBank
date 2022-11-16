@@ -21,18 +21,22 @@ public class ClienteService {
     }
 
     public List<Cliente> listarClientes(){
+
         return cr.findAll();
     }
 
     public Optional<Cliente> listarClienteId(Long id){
+
         return cr.findById(id);
     }
 
     public Cliente editarCliente(Cliente cliente){
+
         return cr.save(cliente);
     }
 
     public void deletarCliente(Long id){
+
         cr.deleteById(id);
     }
 

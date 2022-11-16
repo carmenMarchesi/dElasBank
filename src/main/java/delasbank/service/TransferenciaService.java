@@ -14,10 +14,12 @@ public class TransferenciaService {
     private TransferenciaRepository tr;
 
     public List<Transferencia> listaTransferencias(){
+
         return tr.findAll();
     }
 
     public Transferencia realizarTransferencia(Transferencia transf){
+
         return tr.save(transf);
     }
 }
