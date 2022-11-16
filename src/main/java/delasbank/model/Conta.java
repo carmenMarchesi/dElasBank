@@ -98,7 +98,9 @@ public class Conta {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+
+    public void setCliente(Cliente cliente)
+    {
 
         this.cliente = cliente;
     }
@@ -113,6 +115,7 @@ public class Conta {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(idConta);
     }
 }

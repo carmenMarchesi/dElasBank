@@ -30,7 +30,10 @@ public class ClienteService {
     }
 
 
-    public void deletarCliente(Long id) {
+
+    public void deletarCliente(Long id){
+
+
         cr.deleteById(id);
     }
 
