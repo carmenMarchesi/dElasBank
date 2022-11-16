@@ -3,8 +3,15 @@ package delasbank.service;
 import delasbank.model.Cliente;
 import delasbank.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
 
 
 @Service
@@ -14,25 +21,32 @@ public class ClienteService {
     private ClienteRepository cr;
 
 
+
+
+
     public Cliente cadastrarCliente(Cliente cliente){
         return cr.save(cliente);
-    }
-
-    public void listarClientes(){
-        //List<Cliente> findAll();
-    }
-
-    public void listarClienteId(){
-        //Conta findById (Long id) ;
-    }
-
-    public void editarCliente(){
 
     }
 
-    public void deletarCliente(Long id){
+
+    public void deletarCliente(Long id) {
         cr.deleteById(id);
-
     }
+
+        public List<Cliente> listarClientes (){
+            return cr.findAll();
+        }
+
+
+        public Optional<Cliente> listarClienteId (Long id){
+            return cr.findById(id);
+        }
+
+        public Cliente editarCliente (Cliente cliente){
+            return cr.save(cliente);
+        }
+
+
 
 }

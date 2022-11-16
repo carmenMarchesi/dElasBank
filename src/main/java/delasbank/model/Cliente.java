@@ -1,6 +1,10 @@
 package delasbank.model;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,7 +21,6 @@ public class Cliente {
     private String nome;
     private String  telefone;
 
-    //@JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate dtNascimento;
 
     private String sexo;
@@ -31,9 +34,9 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Long idCliente, String nome, String telefone, LocalDate dtNascimento,
-                   String sexo,
-                   String cpf, String email, Endereco endereco) {
+
+    public Cliente(Long idCliente, String nome, String telefone, LocalDate dtNascimento, String sexo, String cpf, String email, Endereco endereco) {
+
         this.idCliente = idCliente;
         this.nome = nome;
         this.telefone = telefone;

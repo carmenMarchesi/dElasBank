@@ -35,7 +35,8 @@ public class ContaController {
     }
 
     @PostMapping("/cadastrar")
-    public void criarConta(@RequestBody Conta conta){
+    public String criarConta(@RequestBody Conta conta){
+        return "Conta criada";
 
     }
 
