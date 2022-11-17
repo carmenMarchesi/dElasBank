@@ -3,11 +3,13 @@ package delasbank.service;
 import delasbank.model.Conta;
 import delasbank.repository.ContaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
+@Component
 public class ContaService {
 
     @Autowired

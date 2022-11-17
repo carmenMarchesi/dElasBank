@@ -3,6 +3,7 @@ package delasbank.service;
 import delasbank.model.Cliente;
 import delasbank.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 
 @Service
+@Component
 public class ClienteService {
 
     @Autowired
@@ -35,5 +37,4 @@ public class ClienteService {
     public void deletarCliente(Long id){
         cr.deleteById(id);
     }
-
 }

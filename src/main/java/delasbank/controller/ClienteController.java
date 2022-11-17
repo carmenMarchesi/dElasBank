@@ -55,11 +55,13 @@ public class ClienteController {
     }
 
     @DeleteMapping("/deletar/{id}")
-    public String deletarCliente(@PathVariable Long id) throws Exception {
+    public ResponseEntity<?> deletarCliente(@PathVariable Long id) throws Exception {
 
-        System.out.println("Cliente a ser deletado com id: " + id);
-        return "Modo de deleção de cliente";
+        if (id == null) {
+            return ResponseEntity.badRequest().body("Id não pode ser null");
+        } else {
+            return ResponseEntity.ok().build();
 
+        }
     }
-
 }

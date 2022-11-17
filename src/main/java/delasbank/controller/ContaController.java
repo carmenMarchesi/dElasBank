@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Console;
 import java.util.Optional;
 
 @RestController
@@ -42,12 +43,12 @@ public class ContaController {
     }
 
     @DeleteMapping("/excluir")
-    public String deletarConta(@PathVariable Long id) throws Exception{
-        System.out.println("Conta a ser deletado com id: "+ id);
+    public ResponseEntity <?> deletarConta(@PathVariable Long id) throws Exception{
+        if (id == null) {
+                return ResponseEntity.badRequest().body("Id não pode ser null");
+            }else {
+            return ResponseEntity.ok().build();
 
-        return "Modo de exclusão de contas de clientes";
-
+        }
     }
-
-
 }
