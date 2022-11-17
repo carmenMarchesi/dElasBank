@@ -13,7 +13,7 @@ public class TransferenciaService {
     @Autowired
     private TransferenciaRepository tr;
 
-    public List<Transferencia> listaTransferencias(){
+    public List<Transferencia> listarTransferencias(){
         return tr.findAll();
     }
 
