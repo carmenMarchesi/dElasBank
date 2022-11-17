@@ -19,8 +19,13 @@ public class Conta {
     private String numConta;
     private Integer cod_banco;
 
+    //relacionamento do cliente com a conta
     @OneToOne
     private Cliente cliente;
+
+    //relacionamento do conta com transferencias
+    @OneToMany
+    private Transferencia tranferencia;
 
     public Conta() {
     }

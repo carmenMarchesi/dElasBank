@@ -26,6 +26,11 @@ public class Cliente {
     @Embedded
     private Endereco endereco;
 
+    //relacionamento da conta para o cliente
+//    @OneToMany
+//    private Conta conta;
+
+
     public Cliente() {
     }
 

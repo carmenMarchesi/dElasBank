@@ -14,12 +14,10 @@ public class TransferenciaController {
     private TransferenciaService ts;
 
     @GetMapping("/extrato/{id}")
-    public void  listarTransferencias() {
-//        List<Transferencia> GetById (@PathVariable Long idTransacao){
-//
-//
-//        }
+    public void  listarTransferencias(@PathVariable Long id) {
+        //        List<Transferencia> GetById (@PathVariable Long idTransacao){
 
+        System.out.println("Extrato por id: "+ id);
     }
 
     @PostMapping("/transferir")

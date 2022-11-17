@@ -18,8 +18,12 @@ public class Transferencia {
     private Integer codBancoDestino;
     private String agDestino;
     private String contaDestino;
-    private Double valor;
+    private Double valor;   // adicionar 100 reais a conta
     private Date dataTransf;
+
+    //relacionamento do transferencia com conta
+    @ManyToOne
+    private Conta conta;
 
     public Transferencia() {
     }

@@ -4,7 +4,12 @@ import delasbank.model.Cliente;
 import delasbank.model.Endereco;
 import delasbank.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cliente")
@@ -14,46 +19,47 @@ public class ClienteController {
     private ClienteService s;
 
     @PostMapping("/novo")
-    public String cadastrarCliente(@RequestBody Cliente cliente){
-        System.out.println(cliente.getNome());
-        System.out.println(cliente.getEmail());
-        System.out.println(cliente.getDtNascimento());
+    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
+//        System.out.println(cliente.getNome());
+//        System.out.println(cliente.getEmail());
+//        System.out.println(cliente.getDtNascimento());
 
-        return "Cadastro";
+        return ResponseEntity.ok(s.cadastrarCliente(cliente));
 
     }
 
     @GetMapping("/todos")
-    public void listarClientes(){
-
+    public ResponseEntity<List<Cliente>> listarClientes() {
+        return ResponseEntity.ok(s.listarClientes());
 
     }
 
     @GetMapping("/{id}")
-    public Cliente listarClienteId(@PathVariable Long id){
-        System.out.println("Id do cliente "+ id);
-        Cliente cliente1 =  new Cliente();
-        cliente1.setNome("Alunas");
-        cliente1.setCpf("458326125-54");
-        Endereco end1 = new Endereco();
-        end1.setRua("Rua Espanha 395");
-        end1.setCidade("Cuiaba");
-        cliente1.setEndereco(end1);
+    public ResponseEntity<Cliente> listarClienteId(@PathVariable Long id) {
 
-        return cliente1;
+        Optional<Cliente> op = s.listarClienteId(id);
+
+        if (op.isPresent()) {
+            return ResponseEntity.ok(op.get());
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 
     }
 
     @PutMapping("/alterar/{id}")
-    public void editarCliente(@RequestBody Cliente cliente){
+    public String editarCliente(@RequestBody Cliente cliente) {
+
+        return "Editar dados do cliente";
 
     }
 
-    @DeleteMapping("/deletar")
-    public void deletarCliente(){
+    @DeleteMapping("/deletar/{id}")
+    public String deletarCliente(@PathVariable Long id) throws Exception {
+
+        System.out.println("Cliente a ser deletado com id: " + id);
+        return "Modo de deleção de cliente";
 
     }
-
-
 
 }
