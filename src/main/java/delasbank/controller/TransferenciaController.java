@@ -1,5 +1,6 @@
 package delasbank.controller;
 
+import delasbank.model.Cliente;
 import delasbank.model.Conta;
 import delasbank.model.Transferencia;
 import delasbank.service.TransferenciaService;
@@ -19,10 +20,10 @@ public class TransferenciaController {
     private TransferenciaService ts;
 
 
-//    @GetMapping("/extrato/{id}")
-//    public ResponseEntity<Transferencia> listarTransferencias(@PathVariable Long id) {
+   @GetMapping("/extrato/{id}")
+//    public ResponseEntity<Cliente> listarTransferencias(@PathVariable Long id) {
 //
-//        Optional<Conta> op = ts.listarTransferencias(id);
+//       Optional<Cliente> op = ts.listarTransferencias(id);
 //
 //        if (op.isPresent()) {
 //            return ResponseEntity.ok(op.get()); // ajeitar GET
@@ -31,9 +32,8 @@ public class TransferenciaController {
 //
 //    }
 
-
     @PostMapping("/transferir")
-    public String realizarTransferencia(@RequestBody Transferencia transferencia) {
+    public String  realizarTransferencia(@RequestBody Transferencia transferencia) {
         return "Transferência realizada";
     }
 

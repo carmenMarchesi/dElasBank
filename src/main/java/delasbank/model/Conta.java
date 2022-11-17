@@ -14,8 +14,7 @@ public class Conta {
     private Long idConta;
     private String tipo;
     private String agencia;
-
-    private Double saldo;
+    private Double saldo ; //= 100.00;
     private String numConta;
     private Integer cod_banco;
 
@@ -24,7 +23,7 @@ public class Conta {
     private Cliente cliente;
 
     //relacionamento do conta com transferencias
-    @OneToMany
+   @OneToMany
     private Transferencia tranferencia;
 
     public Conta() {
