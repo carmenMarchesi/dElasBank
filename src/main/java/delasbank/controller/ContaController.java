@@ -1,15 +1,13 @@
 package delasbank.controller;
 
-import delasbank.model.Cliente;
 import delasbank.model.Conta;
-import delasbank.model.Endereco;
 import delasbank.service.ContaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.Console;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,6 +17,11 @@ public class ContaController {
 
     @Autowired
     private ContaService cts;
+
+    @GetMapping("/todos")
+    public ResponseEntity<List<Conta>> listarContas() {
+        return ResponseEntity.ok(cts.listarContas());
+    }
 
     @GetMapping("/dados/{id}")
     public ResponseEntity <Conta>dadosConta(@PathVariable Long id){
