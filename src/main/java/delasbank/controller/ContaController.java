@@ -39,17 +39,25 @@ public class ContaController {
     }
 
     @PutMapping("/alterar")
-    public void editarConta(@RequestBody Conta conta){
-
+    public ResponseEntity<Conta> editarConta(@RequestBody Conta conta){
+        return ResponseEntity.ok(cts.editarConta(conta));
     }
 
-    @DeleteMapping("/excluir")
+    @DeleteMapping("/excluir/{id}")
     public ResponseEntity <?> deletarConta(@PathVariable Long id) throws Exception{
         if (id == null) {
-                return ResponseEntity.badRequest().body("Id não pode ser null");
-            }else {
-            return ResponseEntity.ok().build();
-
+            return ResponseEntity.badRequest().body("Id não pode ser null");
         }
+
+        Optional<Conta> op = cts.dadosConta(id);
+
+        if(op.isPresent()){
+            cts.deletarConta(id);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return ResponseEntity.ok().build();
+
     }
 }
