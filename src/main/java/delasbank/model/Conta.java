@@ -21,6 +21,7 @@ public class Conta {
 
     //relacionamento do cliente com a conta
     @OneToOne
+    @JoinColumn(name="idCliente")
     private Cliente cliente;
 
     //relacionamento do conta com transferencias

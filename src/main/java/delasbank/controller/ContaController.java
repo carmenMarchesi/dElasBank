@@ -34,11 +34,8 @@ public class ContaController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<Conta> criarConta(@RequestBody Conta conta){
-        if (conta.getSaldo() <=0){
-            conta.setSaldo(100.00);
-        }
 
-        return ResponseEntity.ok(conta) ;
+        return ResponseEntity.ok(cts.criarConta(conta)) ;
     }
 
     @PutMapping("/alterar")
