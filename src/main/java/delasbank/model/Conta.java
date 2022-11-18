@@ -24,7 +24,7 @@ public class Conta {
 
     //relacionamento do conta com transferencias
    @OneToMany
-    private Transferencia tranferencia;
+    private Transferencia transferencia;
 
     public Conta() {
     }
