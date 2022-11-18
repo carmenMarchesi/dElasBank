@@ -30,7 +30,6 @@ public class Cliente {
 //    @OneToMany
 //    private Conta conta;
 
-
     public Cliente() {
     }
 

@@ -3,6 +3,7 @@ package delasbank.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -23,8 +24,9 @@ public class Conta {
     private Cliente cliente;
 
     //relacionamento do conta com transferencias
-   @OneToMany
-    private Transferencia transferencia;
+    @OneToMany
+    @JoinColumn(name = "idTransacao")
+    private List<Transferencia> transferencias;
 
     public Conta() {
     }

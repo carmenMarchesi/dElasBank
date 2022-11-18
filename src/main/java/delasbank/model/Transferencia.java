@@ -15,6 +15,7 @@ public class Transferencia {
     private Long idTransacao;
 
     @ManyToOne
+    @JoinColumn(name = "idCliente")
     private Cliente cliente;
     private Integer codBancoDestino;
     private String agDestino;
@@ -24,6 +25,7 @@ public class Transferencia {
 
     //relacionamento do transferencia com conta
     @ManyToOne
+    @JoinColumn(name = "idConta")
     private Conta conta;
 
     public Transferencia() {
