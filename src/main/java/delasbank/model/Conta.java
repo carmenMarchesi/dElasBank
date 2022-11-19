@@ -19,11 +19,14 @@ public class Conta {
     @OneToOne
     private Cliente cliente;
 
+//   @OneToMany
+//    private Transferencia transferencia;
+
     public Conta() {
     }
 
     public Conta(Long idConta, String tipo, String agencia, Double saldo,
-                 String numConta, Integer cod_banco) {
+                 String numConta, Integer cod_banco ) {
         this.idConta = idConta;
         this.tipo = tipo;
         this.agencia = agencia;

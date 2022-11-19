@@ -24,9 +24,9 @@ public class ClienteController {
     }
 
     @GetMapping("/todos")
-    public void listarClientes(){
+    public String listarClientes(){
 
-
+        return "Lista de clientes";
     }
 
     @GetMapping("/{id}")
@@ -45,15 +45,17 @@ public class ClienteController {
     }
 
     @PutMapping("/alterar/{id}")
-    public void editarCliente(@RequestBody Cliente cliente){
+    public String editarCliente(@RequestBody Cliente cliente){
 
+        return "Editar dados do cliente";
     }
 
-    @DeleteMapping("/deletar")
-    public void deletarCliente(){
+    @DeleteMapping("/deletar/{id}")
+    public String deletarCliente(@PathVariable Long id) throws Exception{
+        System.out.println("Cliente a ser deletado com id: "+ id);
+
+        return "Modo de deleção de cliente";
 
     }
-
-
 
 }

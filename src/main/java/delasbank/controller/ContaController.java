@@ -16,7 +16,8 @@ public class ContaController {
     private ContaService cts;
 
     @GetMapping("/dados/{id}")
-    public Conta dadosConta(){
+    public Conta dadosConta(@PathVariable Long id){
+        System.out.println("Id do cliente "+ id);
         Cliente c1 = new Cliente();
         c1.setNome("Maria");
         c1.setTelefone("011985567456");
@@ -30,6 +31,7 @@ public class ContaController {
         ct1.setNumConta("456798-0");
         ct1.setAgencia("900-54");
         ct1.setCliente(c1);
+
         return ct1;
 
     }
@@ -47,7 +49,10 @@ public class ContaController {
     }
 
     @DeleteMapping("/excluir")
-    public void deletarConta(){
+    public String deletarConta(@PathVariable Long id) throws Exception{
+        System.out.println("Conta a ser deletado com id: "+ id);
+
+        return "Modo de exclusão de contas de clientes";
 
     }
 

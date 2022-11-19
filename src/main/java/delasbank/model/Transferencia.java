@@ -10,8 +10,12 @@ public class Transferencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTransacao;
+
+//    @OneToOne
+//     private Cliente cliente;
+
     @ManyToOne
-    private Cliente cliente;
+    private Conta conta;
     private Integer codBancoDestino;
     private String agDestino;
     private String contaDestino;
@@ -21,10 +25,9 @@ public class Transferencia {
     public Transferencia() {
     }
 
-    public Transferencia(Long idTransacao, Cliente cliente, Integer codBancoDestino,
+    public Transferencia(Long idTransacao, Integer codBancoDestino,
                          String agDestino, String contaDestino, Double valor, Date dataTransf) {
         this.idTransacao = idTransacao;
-        this.cliente = cliente;
         this.codBancoDestino = codBancoDestino;
         this.agDestino = agDestino;
         this.contaDestino = contaDestino;
