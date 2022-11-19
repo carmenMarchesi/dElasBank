@@ -27,9 +27,9 @@ public class Cliente {
     private Endereco endereco;
 
     //relacionamento da conta para o cliente
-//    @OneToMany
+//    @OneToOne
+//    @JoinColumn(name = "idConta")
 //    private Conta conta;
-
 
     public Cliente() {
     }

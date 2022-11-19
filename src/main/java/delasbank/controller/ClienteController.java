@@ -61,7 +61,6 @@ public class ClienteController {
             return ResponseEntity.badRequest().body("Id não pode ser null");
         } else {
             return ResponseEntity.ok().build();
-
         }
     }
 }

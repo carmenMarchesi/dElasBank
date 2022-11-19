@@ -1,15 +1,13 @@
 package delasbank.controller;
 
-import delasbank.model.Cliente;
 import delasbank.model.Conta;
-import delasbank.model.Endereco;
 import delasbank.service.ContaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.Console;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,6 +17,11 @@ public class ContaController {
 
     @Autowired
     private ContaService cts;
+
+    @GetMapping("/todos")
+    public ResponseEntity<List<Conta>> listarContas() {
+        return ResponseEntity.ok(cts.listarContas());
+    }
 
     @GetMapping("/dados/{id}")
     public ResponseEntity <Conta>dadosConta(@PathVariable Long id){
@@ -34,25 +37,30 @@ public class ContaController {
 
     @PostMapping("/cadastrar")
     public ResponseEntity<Conta> criarConta(@RequestBody Conta conta){
-        if (conta.getSaldo() <=0){
-            conta.setSaldo(100.00);
-        }
 
-        return ResponseEntity.ok(conta) ;
+        return ResponseEntity.ok(cts.criarConta(conta)) ;
     }
 
     @PutMapping("/alterar")
-    public void editarConta(@RequestBody Conta conta){
-
+    public ResponseEntity<Conta> editarConta(@RequestBody Conta conta){
+        return ResponseEntity.ok(cts.editarConta(conta));
     }
 
-    @DeleteMapping("/excluir")
+    @DeleteMapping("/excluir/{id}")
     public ResponseEntity <?> deletarConta(@PathVariable Long id) throws Exception{
         if (id == null) {
-                return ResponseEntity.badRequest().body("Id não pode ser null");
-            }else {
-            return ResponseEntity.ok().build();
-
+            return ResponseEntity.badRequest().body("Id não pode ser null");
         }
+
+        Optional<Conta> op = cts.dadosConta(id);
+
+        if(op.isPresent()){
+            cts.deletarConta(id);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return ResponseEntity.ok().build();
+
     }
 }
