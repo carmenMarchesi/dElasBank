@@ -23,6 +23,7 @@ public class Conta {
     //@JoinColumn(name="id_cliente")
     private Cliente cliente;
 
+    //@Transient
     private Long idCliente;
 
     //relacionamento do conta com transferencias

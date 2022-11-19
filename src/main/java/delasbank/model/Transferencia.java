@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -23,11 +22,23 @@ public class Transferencia {
     private Double valor;   // adicionar 100 reais a conta
     private LocalDate dataTransf;
 
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
+
     //relacionamento do transferencia com conta
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "idConta")
+    //@JoinColumn(name = "idConta")
     private Conta conta;
+
+
+    //@Transient
+    private Long idConta;
 
     public Transferencia() {
     }
@@ -100,6 +111,14 @@ public class Transferencia {
     public void setDataTransf(LocalDate dataTransf) {
 
         this.dataTransf = dataTransf;
+    }
+
+    public Long getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(Long idConta) {
+        this.idConta = idConta;
     }
 
     @Override
