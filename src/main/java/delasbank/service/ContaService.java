@@ -17,6 +17,9 @@ public class ContaService {
     @Autowired
     private ContaRepository crp;
 
+    @Autowired
+    private ClienteService cs;
+
     public List<Conta> listarContas(){
         return crp.findAll();
     }
@@ -26,6 +29,10 @@ public class ContaService {
     }
 
     public Conta criarConta(Conta conta){
+
+        Cliente c1 = cs.listarClienteId(conta.getIdCliente()).get();
+        conta.setCliente(c1);
+
         return crp.save(conta);
     }
 

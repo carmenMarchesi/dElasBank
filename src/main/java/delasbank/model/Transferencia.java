@@ -3,13 +3,13 @@ package delasbank.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
 public class Transferencia {
 
-    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTransacao;
@@ -21,9 +21,10 @@ public class Transferencia {
     private String agDestino;
     private String contaDestino;
     private Double valor;   // adicionar 100 reais a conta
-    private Date dataTransf;
+    private LocalDate dataTransf;
 
     //relacionamento do transferencia com conta
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idConta")
     private Conta conta;
@@ -32,7 +33,7 @@ public class Transferencia {
     }
 
     public Transferencia(Long idTransacao, Integer codBancoDestino,
-                         String agDestino, String contaDestino, Double valor, Date dataTransf) {
+                         String agDestino, String contaDestino, Double valor, LocalDate dataTransf) {
         this.idTransacao = idTransacao;
 //        this.cliente = cliente;
         this.codBancoDestino = codBancoDestino;
@@ -91,12 +92,12 @@ public class Transferencia {
         this.valor = valor;
     }
 
-    public Date getDataTransf() {
+    public LocalDate getDataTransf() {
 
         return dataTransf;
     }
 
-    public void setDataTransf(Date dataTransf) {
+    public void setDataTransf(LocalDate dataTransf) {
 
         this.dataTransf = dataTransf;
     }

@@ -9,7 +9,6 @@ import java.util.Objects;
 @Entity
 public class Conta {
 
-    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idConta;
@@ -21,13 +20,16 @@ public class Conta {
 
     //relacionamento do cliente com a conta
     @OneToOne
-    @JoinColumn(name="idCliente")
+    //@JoinColumn(name="id_cliente")
     private Cliente cliente;
 
+    private Long idCliente;
+
     //relacionamento do conta com transferencias
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "idTransacao")
-    private List<Transferencia> transferencias;
+    private List<Transferencia> transferencia;
 
     public Conta() {
     }
@@ -100,6 +102,14 @@ public class Conta {
     public void setCod_banco(Integer cod_banco) {
 
         this.cod_banco = cod_banco;
+    }
+
+    public Long getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Cliente getCliente() {
