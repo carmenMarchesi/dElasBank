@@ -15,27 +15,19 @@ public class Conta {
     private Long idConta;
     private String tipo;
     private String agencia;
-
-    private Double saldo ; //= 100.00;
-
+    private Double saldo;
     private String numConta;
     private Integer cod_banco;
 
-    //relacionamento do cliente com a conta
     @OneToOne
-    //@JoinColumn(name="id_cliente")
     private Cliente cliente;
 
-
-    //@Transient
     private Long idCliente;
 
-    //relacionamento do conta com transferencias
     @JsonIgnore
     @OneToMany
     @JoinColumn(name = "idTransacao")
     private List<Transferencia> transferencia;
-
 
     public Conta() {
     }
@@ -111,10 +103,12 @@ public class Conta {
     }
 
     public Long getIdCliente() {
+
         return idCliente;
     }
 
     public void setIdCliente(Long idCliente) {
+
         this.idCliente = idCliente;
     }
 

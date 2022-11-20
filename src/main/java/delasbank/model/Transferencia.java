@@ -1,53 +1,126 @@
-package delasbank.controller;
+package delasbank.model;
 
-import delasbank.model.Transferencia;
-import delasbank.service.TransferenciaService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.Optional;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Objects;
 
-@RestController
-@RequestMapping("/transferencia")
-public class TransferenciaController {
+@Entity
+public class Transferencia {
 
-    @Autowired
-    private TransferenciaService ts;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idTransacao;
 
+    private Double valor;
+    private LocalDate dataTransf;
 
-    //@GetMapping("/extrato/{id}")
-//    public ResponseEntity<Cliente> listarTransferencias(@PathVariable Long id) {
-//
-//       Optional<Cliente> op = ts.listarTransferencias(id);
-//
-//        if (op.isPresent()) {
-//            return ResponseEntity.ok(op.get()); // ajeitar GET
-//        }
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//
-//    }
-    @GetMapping("/listar/{id}")
+    @JsonIgnore
+    @ManyToOne
+    private Conta contaOrigem;
 
-    public ResponseEntity<Transferencia> listarTransferenciaId(@PathVariable Long id){
+    @JsonIgnore
+    @ManyToOne
+    private Conta contaDestino;
 
-        Optional<Transferencia> op = ts.listarTrasnferenciaId(id);
+    private Long idContaOrg;
+    private Long idContaDest;
 
-        if (op.isPresent()) {
-            return ResponseEntity.ok(op.get()); // ajeitar GET
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
+    public Transferencia() {
     }
 
 
-    @PostMapping("/transferir")
-    public ResponseEntity<Transferencia> realizarTransferencia(@RequestBody Transferencia transferencia) {
+    public Transferencia(Long idTransacao, Double valor, LocalDate dataTransf, Conta contaOrigem, Conta contaDestino, Long idConta) {
+        this.idTransacao = idTransacao;
+        this.valor = valor;
+        this.dataTransf = dataTransf;
+        this.contaOrigem = contaOrigem;
+        this.contaDestino = contaDestino;
+        this.idContaOrg = idContaOrg;
+    }
 
-        return ResponseEntity.ok(ts.realizarTransferencia(transferencia));
+    public Long getIdTransacao() {
+
+        return idTransacao;
+    }
+
+    public void setIdTransacao(Long idTransacao) {
+
+        this.idTransacao = idTransacao;
+    }
+
+    public Conta getContaOrigem() {
+        return contaOrigem;
+    }
+
+    public void setContaOrigem(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
+    }
+
+    public Conta getContaDestino() {
+        return contaDestino;
+    }
+
+    public void setContaDestino(Conta contaDestino) {
+        this.contaDestino = contaDestino;
+    }
+
+    public Double getValor() {
+
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+
+        this.valor = valor;
+    }
+
+    public LocalDate getDataTransf() {
+
+        return dataTransf;
+    }
+
+    public void setDataTransf(LocalDate dataTransf) {
+
+        this.dataTransf = dataTransf;
+    }
+
+    public Long getIdConta() {
+        return idContaOrg;
+    }
+
+    public void setIdConta(Long idConta) {
+        this.idContaOrg = idContaOrg;
+    }
+
+    public Long getIdContaOrg() {
+        return idContaOrg;
+    }
+
+    public void setIdContaOrg(Long idContaOrg) {
+        this.idContaOrg = idContaOrg;
+    }
+
+    public Long getIdContaDest() {
+        return idContaDest;
+    }
+
+    public void setIdContaDest(Long idContaDest) {
+        this.idContaDest = idContaDest;
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transferencia that = (Transferencia) o;
+        return idTransacao.equals(that.idTransacao);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idTransacao);
+    }
 }
-

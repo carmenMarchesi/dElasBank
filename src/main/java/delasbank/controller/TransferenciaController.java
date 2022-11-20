@@ -42,7 +42,7 @@ public class TransferenciaController {
 
    public ResponseEntity<Transferencia> listarTransferenciaId(@PathVariable Long id){
 
-        Optional<Transferencia> op = ts.listarTrasnferenciaId(id);
+        Optional<Transferencia> op = ts.listarTransferenciaId(id);
 
         if (op.isPresent()) {
             return ResponseEntity.ok(op.get()); // ajeitar GET
