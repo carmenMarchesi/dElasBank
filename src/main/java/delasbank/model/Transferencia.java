@@ -30,7 +30,6 @@ public class Transferencia {
     public Transferencia() {
     }
 
-
     public Transferencia(Long idTransacao, Double valor, LocalDate dataTransf, Conta contaOrigem, Conta contaDestino, Long idConta) {
         this.idTransacao = idTransacao;
         this.valor = valor;

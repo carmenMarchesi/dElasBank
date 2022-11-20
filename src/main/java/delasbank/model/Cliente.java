@@ -8,11 +8,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Objects;
 
-
 @Entity
 public class Cliente {
 
-    @JsonIgnore   // confirmar local da annotation jsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;
@@ -26,16 +24,8 @@ public class Cliente {
     @Embedded
     private Endereco endereco;
 
-
-    //relacionamento da conta para o cliente
-//    @OneToOne
-//    @JoinColumn(name = "idConta")
-//    private Conta conta;
-
-
     public Cliente() {
     }
-
 
     public Cliente(Long idCliente, String nome, String telefone, LocalDate dtNascimento, String sexo, String cpf, String email, Endereco endereco) {
 

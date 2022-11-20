@@ -38,12 +38,10 @@ public class TransferenciaController {
 
    }
 
-
     @PostMapping("/transferir")
     public ResponseEntity<Transferencia> realizarTransferencia(@RequestBody Transferencia transferencia) {
 
        return ResponseEntity.ok(ts.realizarTransferencia(transferencia));
     }
-
 
 }
