@@ -1,109 +1,53 @@
-package delasbank.model;
+package delasbank.controller;
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.Objects;
+import delasbank.model.Transferencia;
+import delasbank.service.TransferenciaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Entity
-public class Transferencia {
+import java.util.Optional;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTransacao;
+@RestController
+@RequestMapping("/transferencia")
+public class TransferenciaController {
 
-//    @OneToOne
-//     private Cliente cliente;
+    @Autowired
+    private TransferenciaService ts;
 
-    @ManyToOne
-    private Conta conta;
-    private Integer codBancoDestino;
-    private String agDestino;
-    private String contaDestino;
-    private Double valor;
-    private Date dataTransf;
 
-    public Transferencia() {
+    //@GetMapping("/extrato/{id}")
+//    public ResponseEntity<Cliente> listarTransferencias(@PathVariable Long id) {
+//
+//       Optional<Cliente> op = ts.listarTransferencias(id);
+//
+//        if (op.isPresent()) {
+//            return ResponseEntity.ok(op.get()); // ajeitar GET
+//        }
+//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//
+//    }
+    @GetMapping("/listar/{id}")
+
+    public ResponseEntity<Transferencia> listarTransferenciaId(@PathVariable Long id){
+
+        Optional<Transferencia> op = ts.listarTrasnferenciaId(id);
+
+        if (op.isPresent()) {
+            return ResponseEntity.ok(op.get()); // ajeitar GET
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
     }
 
-    public Transferencia(Long idTransacao, Integer codBancoDestino,
-                         String agDestino, String contaDestino, Double valor, Date dataTransf) {
-        this.idTransacao = idTransacao;
-        this.codBancoDestino = codBancoDestino;
-        this.agDestino = agDestino;
-        this.contaDestino = contaDestino;
-        this.valor = valor;
-        this.dataTransf = dataTransf;
+
+    @PostMapping("/transferir")
+    public ResponseEntity<Transferencia> realizarTransferencia(@RequestBody Transferencia transferencia) {
+
+        return ResponseEntity.ok(ts.realizarTransferencia(transferencia));
     }
 
-    public Long getIdTransacao() {
 
-        return idTransacao;
-    }
-
-    public void setIdTransacao(Long idTransacao) {
-
-        this.idTransacao = idTransacao;
-    }
-
-    public Integer getCodBancoDestino() {
-
-        return codBancoDestino;
-    }
-
-    public void setCodBancoDestino(Integer codBancoDestino) {
-        this.codBancoDestino = codBancoDestino;
-    }
-
-    public String getAgDestino() {
-
-        return agDestino;
-    }
-
-    public void setAgDestino(String agDestino) {
-
-        this.agDestino = agDestino;
-    }
-
-    public String getContaDestino() {
-
-        return contaDestino;
-    }
-
-    public void setContaDestino(String contaDestino) {
-
-        this.contaDestino = contaDestino;
-    }
-
-    public Double getValor() {
-
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-
-        this.valor = valor;
-    }
-
-    public Date getDataTransf() {
-
-        return dataTransf;
-    }
-
-    public void setDataTransf(Date dataTransf) {
-
-        this.dataTransf = dataTransf;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Transferencia that = (Transferencia) o;
-        return idTransacao.equals(that.idTransacao);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idTransacao);
-    }
 }
+

@@ -1,12 +1,18 @@
 package delasbank.model;
 
+
 import javax.persistence.*;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Objects;
+
 
 @Entity
 public class Cliente {
 
+    @JsonIgnore   // confirmar local da annotation jsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCliente;
@@ -19,6 +25,12 @@ public class Cliente {
     private String email;
     @Embedded
     private Endereco endereco;
+
+
+    //relacionamento da conta para o cliente
+//    @OneToOne
+//    @JoinColumn(name = "idConta")
+//    private Conta conta;
 
 
     public Cliente() {

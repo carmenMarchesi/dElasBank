@@ -1,6 +1,9 @@
 package delasbank.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -12,15 +15,27 @@ public class Conta {
     private Long idConta;
     private String tipo;
     private String agencia;
-    private Double saldo;
+
+    private Double saldo ; //= 100.00;
+
     private String numConta;
     private Integer cod_banco;
 
+    //relacionamento do cliente com a conta
     @OneToOne
+    //@JoinColumn(name="id_cliente")
     private Cliente cliente;
 
-//   @OneToMany
-//    private Transferencia transferencia;
+
+    //@Transient
+    private Long idCliente;
+
+    //relacionamento do conta com transferencias
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "idTransacao")
+    private List<Transferencia> transferencia;
+
 
     public Conta() {
     }
@@ -93,6 +108,14 @@ public class Conta {
     public void setCod_banco(Integer cod_banco) {
 
         this.cod_banco = cod_banco;
+    }
+
+    public Long getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Long idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Cliente getCliente() {

@@ -1,10 +1,10 @@
 package delasbank.model;
 
-import javax.persistence.*;
+
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class Endereco {
-
 
     private String cep;
     private String rua;
