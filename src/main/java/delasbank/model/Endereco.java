@@ -1,9 +1,7 @@
 package delasbank.model;
 
+
 import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Embeddable
 public class Endereco {
@@ -16,10 +14,12 @@ public class Endereco {
     private String cidade;
     private String estado;
 
+
     public Endereco() {
     }
 
     public Endereco( String cep, String rua, Integer numero, String complemento, String bairro, String cidade, String estado) {
+
         this.cep = cep;
         this.rua = rua;
         this.numero = numero;
@@ -28,6 +28,7 @@ public class Endereco {
         this.cidade = cidade;
         this.estado = estado;
     }
+
 
     public String getCep() {
 

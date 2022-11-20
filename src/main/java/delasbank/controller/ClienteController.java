@@ -16,7 +16,7 @@ import java.util.Optional;
 public class ClienteController {
 
     @Autowired
-    private ClienteService s;
+    private ClienteService cs;
 
     @PostMapping("/novo")
     public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
@@ -24,20 +24,21 @@ public class ClienteController {
 //        System.out.println(cliente.getEmail());
 //        System.out.println(cliente.getDtNascimento());
 
-        return ResponseEntity.ok(s.cadastrarCliente(cliente));
+        return ResponseEntity.ok(cs.cadastrarCliente(cliente));
 
     }
 
     @GetMapping("/todos")
+
     public ResponseEntity<List<Cliente>> listarClientes() {
-        return ResponseEntity.ok(s.listarClientes());
+        return ResponseEntity.ok(cs.listarClientes());
 
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> listarClienteId(@PathVariable Long id) {
 
-        Optional<Cliente> op = s.listarClienteId(id);
+        Optional<Cliente> op = cs.listarClienteId(id);
 
         if (op.isPresent()) {
             return ResponseEntity.ok(op.get());
@@ -48,10 +49,9 @@ public class ClienteController {
     }
 
     @PutMapping("/alterar/{id}")
-    public String editarCliente(@RequestBody Cliente cliente) {
+    public String editarCliente(@RequestBody Cliente cliente){
 
         return "Editar dados do cliente";
-
     }
 
     @DeleteMapping("/deletar/{id}")
@@ -63,4 +63,5 @@ public class ClienteController {
             return ResponseEntity.ok().build();
         }
     }
+
 }

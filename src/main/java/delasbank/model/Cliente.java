@@ -1,9 +1,10 @@
 package delasbank.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Objects;
 
@@ -22,19 +23,22 @@ public class Cliente {
     private String sexo;
     private String cpf;
     private String email;
-
     @Embedded
     private Endereco endereco;
+
 
     //relacionamento da conta para o cliente
 //    @OneToOne
 //    @JoinColumn(name = "idConta")
 //    private Conta conta;
 
+
     public Cliente() {
     }
 
+
     public Cliente(Long idCliente, String nome, String telefone, LocalDate dtNascimento, String sexo, String cpf, String email, Endereco endereco) {
+
         this.idCliente = idCliente;
         this.nome = nome;
         this.telefone = telefone;

@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+
 @Entity
 public class Conta {
 
@@ -14,19 +15,15 @@ public class Conta {
     private Long idConta;
     private String tipo;
     private String agencia;
-    private Double saldo ; //= 100.00;
+    private Double saldo;
     private String numConta;
     private Integer cod_banco;
 
-    //relacionamento do cliente com a conta
     @OneToOne
-    //@JoinColumn(name="id_cliente")
     private Cliente cliente;
 
-    //@Transient
     private Long idCliente;
 
-    //relacionamento do conta com transferencias
     @JsonIgnore
     @OneToMany
     @JoinColumn(name = "idTransacao")
@@ -36,7 +33,7 @@ public class Conta {
     }
 
     public Conta(Long idConta, String tipo, String agencia, Double saldo,
-                 String numConta, Integer cod_banco) {
+                 String numConta, Integer cod_banco ) {
         this.idConta = idConta;
         this.tipo = tipo;
         this.agencia = agencia;
@@ -106,18 +103,24 @@ public class Conta {
     }
 
     public Long getIdCliente() {
+
         return idCliente;
     }
 
     public void setIdCliente(Long idCliente) {
+
         this.idCliente = idCliente;
     }
 
     public Cliente getCliente() {
+
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+
+    public void setCliente(Cliente cliente)
+    {
+
         this.cliente = cliente;
     }
 
@@ -131,6 +134,7 @@ public class Conta {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(idConta);
     }
 }
