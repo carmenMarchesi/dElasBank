@@ -1,7 +1,11 @@
 package delasbank.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
+
 
 @Entity
 public class Conta {
@@ -11,7 +15,6 @@ public class Conta {
     private Long idConta;
     private String tipo;
     private String agencia;
-
     private Double saldo;
     private String numConta;
     private Integer cod_banco;
@@ -19,11 +22,18 @@ public class Conta {
     @OneToOne
     private Cliente cliente;
 
+    private Long idCliente;
+
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "idTransacao")
+    private List<Transferencia> transferencia;
+
     public Conta() {
     }
 
     public Conta(Long idConta, String tipo, String agencia, Double saldo,
-                 String numConta, Integer cod_banco) {
+                 String numConta, Integer cod_banco ) {
         this.idConta = idConta;
         this.tipo = tipo;
         this.agencia = agencia;
@@ -92,11 +102,25 @@ public class Conta {
         this.cod_banco = cod_banco;
     }
 
+    public Long getIdCliente() {
+
+        return idCliente;
+    }
+
+    public void setIdCliente(Long idCliente) {
+
+        this.idCliente = idCliente;
+    }
+
     public Cliente getCliente() {
+
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+
+    public void setCliente(Cliente cliente)
+    {
+
         this.cliente = cliente;
     }
 
@@ -110,6 +134,7 @@ public class Conta {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(idConta);
     }
 }

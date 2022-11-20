@@ -1,11 +1,14 @@
 package delasbank.controller;
 
-import delasbank.model.Cliente;
 import delasbank.model.Conta;
-import delasbank.model.Endereco;
 import delasbank.service.ContaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/conta")
@@ -15,39 +18,53 @@ public class ContaController {
     @Autowired
     private ContaService cts;
 
+    @GetMapping("/todos")
+    public ResponseEntity<List<Conta>> listarContas() {
+        return ResponseEntity.ok(cts.listarContas());
+    }
+
     @GetMapping("/dados/{id}")
-    public Conta dadosConta(){
-        Cliente c1 = new Cliente();
-        c1.setNome("Maria");
-        c1.setTelefone("011985567456");
-        c1.setCpf("1235678-10");
-        Endereco e1 = new Endereco();
-        e1.setRua("Rua Planejada 1");
-        e1.setBairro("Bairro A");
-        e1.setCidade("Sao Paulo");
-        c1.setEndereco(e1);
-        Conta ct1 = new Conta();
-        ct1.setNumConta("456798-0");
-        ct1.setAgencia("900-54");
-        ct1.setCliente(c1);
-        return ct1;
+    public ResponseEntity <Conta>dadosConta(@PathVariable Long id){
+
+           Optional<Conta> op = cts.dadosConta(id);
+
+           if (op.isPresent()) {
+                return ResponseEntity.ok(op.get());
+           }
+           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 
     }
 
     @PostMapping("/cadastrar")
-    public String criarConta(@RequestBody Conta conta){
-        return "Conta criada";
+    public ResponseEntity<Conta> criarConta(@RequestBody Conta conta){
+
+        return ResponseEntity.ok(cts.criarConta(conta)) ;
+
     }
 
     @PutMapping("/alterar")
-    public void editarConta(@RequestBody Conta conta){
-
-    }
-
-    @DeleteMapping("/excluir")
-    public void deletarConta(){
-
+    public ResponseEntity<Conta> editarConta(@RequestBody Conta conta){
+        return ResponseEntity.ok(cts.editarConta(conta));
     }
 
 
+    @DeleteMapping("/excluir/{id}")
+    public ResponseEntity <?> deletarConta(@PathVariable Long id) throws Exception{
+        if (id == null) {
+            return ResponseEntity.badRequest().body("Id não pode ser null");
+        }
+
+        Optional<Conta> op = cts.dadosConta(id);
+
+        if(op.isPresent()){
+            cts.deletarConta(id);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return ResponseEntity.ok().build();
+
+
+    }
 }
