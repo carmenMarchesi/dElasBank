@@ -20,6 +20,7 @@ public class ContaController {
 
     @GetMapping("/todos")
     public ResponseEntity<List<Conta>> listarContas() {
+
         return ResponseEntity.ok(cts.listarContas());
     }
 
