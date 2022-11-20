@@ -20,9 +20,6 @@ public class ClienteController {
 
     @PostMapping("/novo")
     public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente) {
-//        System.out.println(cliente.getNome());
-//        System.out.println(cliente.getEmail());
-//        System.out.println(cliente.getDtNascimento());
 
         return ResponseEntity.ok(cs.cadastrarCliente(cliente));
 
@@ -59,9 +56,18 @@ public class ClienteController {
 
         if (id == null) {
             return ResponseEntity.badRequest().body("Id não pode ser null");
-        } else {
-            return ResponseEntity.ok().build();
         }
+
+        Optional<Cliente> op = cs.listarClienteId(id);
+
+        if(op.isPresent()){
+            cs.deletarCliente(id);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return ResponseEntity.ok().build();
+
     }
 
 }
