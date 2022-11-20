@@ -1,13 +1,9 @@
 package delasbank.model;
 
 import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Embeddable
 public class Endereco {
-
     private String cep;
     private String rua;
     private Integer numero;
