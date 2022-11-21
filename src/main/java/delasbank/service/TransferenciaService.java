@@ -44,10 +44,12 @@ public class TransferenciaService {
             ctDestino.setSaldo(saldoFiDest);
             transf.setContaDestino(ctDestino);
 
+            return tr.save(transf);
+
         }else{
             System.out.println("Saldo insuficiente");
         }
 
-        return tr.save(transf);
+        return transf;
     }
 }

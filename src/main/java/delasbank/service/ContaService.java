@@ -36,10 +36,30 @@ public class ContaService {
         return crp.save(conta);
     }
 
-    public Conta editarConta(Conta conta){
+//    public Conta editarConta(Conta conta){
+//
+//        return crp.save(conta);
+//    }
 
-        return crp.save(conta);
+    public Conta editarConta(Conta conta) {
+        Optional<Conta> contaFromDb = crp.findById(conta.getIdConta());
+
+        if (contaFromDb.isPresent()) {
+            Conta c = contaFromDb.get();
+
+            if (conta.getNumConta() != null ) {
+                c.setNumConta(conta.getNumConta());
+            }
+
+             if(conta.getAgencia() != null){
+                 c.setAgencia(conta.getAgencia());
+             }
+
+            crp.save(c);
+        }
+        return conta;
     }
+
 
     public void deletarConta(Long id){
 
