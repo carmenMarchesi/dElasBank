@@ -1,12 +1,14 @@
 package delasbank.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+@DynamicUpdate
 public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
