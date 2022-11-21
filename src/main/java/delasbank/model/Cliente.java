@@ -5,10 +5,12 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.Objects;
 
 @Entity
+@DynamicUpdate
 public class Cliente {
 
     @Id

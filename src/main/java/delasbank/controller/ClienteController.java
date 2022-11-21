@@ -46,9 +46,10 @@ public class ClienteController {
     }
 
     @PutMapping("/alterar/{id}")
-    public String editarCliente(@RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> editarCliente(@RequestBody Cliente cliente){
 
-        return "Editar dados do cliente";
+        return ResponseEntity.ok(cs.editarCliente(cliente));
+
     }
 
     @DeleteMapping("/deletar/{id}")
