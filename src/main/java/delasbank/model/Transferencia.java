@@ -30,14 +30,13 @@ public class Transferencia {
     public Transferencia() {
     }
 
-
-    public Transferencia(Long idTransacao, Double valor, LocalDate dataTransf, Conta contaOrigem, Conta contaDestino, Long idConta) {
+    public Transferencia(Long idTransacao, Double valor, LocalDate dataTransf, Conta contaOrigem, Conta contaDestino) {
         this.idTransacao = idTransacao;
         this.valor = valor;
         this.dataTransf = dataTransf;
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
-        this.idContaOrg = idContaOrg;
+        //this.idContaOrg = idContaOrg;
     }
 
     public Long getIdTransacao() {
@@ -86,13 +85,13 @@ public class Transferencia {
         this.dataTransf = dataTransf;
     }
 
-    public Long getIdConta() {
-        return idContaOrg;
-    }
+//    public Long getIdConta() {
+//        return idContaOrg;
+//    }
 
-    public void setIdConta(Long idConta) {
-        this.idContaOrg = idContaOrg;
-    }
+//    public void setIdConta(Long idConta) {
+//        this.idContaOrg = idContaOrg;
+//    }
 
     public Long getIdContaOrg() {
         return idContaOrg;

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -17,29 +18,14 @@ public class TransferenciaController {
     private TransferenciaService ts;
 
 
-//    @GetMapping("/extrato/{id}")
-//    public void  listarTransferencias(@PathVariable Long id) {
-//        List<Transferencia> GetById (@PathVariable Long idTransacao){
+    @GetMapping("/listar")
+    public ResponseEntity<List<Transferencia>> listarTransferencias() {
 
+        return ResponseEntity.ok(ts.listarTransferencias());
 
-   //@GetMapping("/extrato/{id}")
-//    public ResponseEntity<Cliente> listarTransferencias(@PathVariable Long id) {
+    }
 
-//
-//       Optional<Cliente> op = ts.listarTransferencias(id);
-//
-//        if (op.isPresent()) {
-//            return ResponseEntity.ok(op.get()); // ajeitar GET
-//        }
-
-        //System.out.println("Extrato por id: "+ id);
-
-//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//
-//    }
 @GetMapping("/listar/{id}")
-
-
    public ResponseEntity<Transferencia> listarTransferenciaId(@PathVariable Long id){
 
         Optional<Transferencia> op = ts.listarTransferenciaId(id);
@@ -52,12 +38,10 @@ public class TransferenciaController {
 
    }
 
-
     @PostMapping("/transferir")
     public ResponseEntity<Transferencia> realizarTransferencia(@RequestBody Transferencia transferencia) {
 
        return ResponseEntity.ok(ts.realizarTransferencia(transferencia));
     }
-
 
 }

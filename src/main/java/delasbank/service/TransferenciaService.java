@@ -33,18 +33,21 @@ public class TransferenciaService {
 
         Conta ctOrigem = cts.dadosConta(transf.getIdContaOrg()).get();
         Double saldoFiOrig;
-        saldoFiOrig = ctOrigem.getSaldo()- transf.getValor();
-        ctOrigem.setSaldo(saldoFiOrig);
-        transf.setContaOrigem(ctOrigem);
+        if (ctOrigem.getSaldo() > transf.getValor()){
+            saldoFiOrig = ctOrigem.getSaldo()- transf.getValor();
+            ctOrigem.setSaldo(saldoFiOrig);
+            transf.setContaOrigem(ctOrigem);
 
-        Conta ctDestino = cts.dadosConta(transf.getIdContaDest()).get();
-        Double saldoFiDest;
-        saldoFiDest = ctDestino.getSaldo()+ transf.getValor();
-        ctDestino.setSaldo(saldoFiDest);
-        transf.setContaDestino(ctDestino);
+            Conta ctDestino = cts.dadosConta(transf.getIdContaDest()).get();
+            Double saldoFiDest;
+            saldoFiDest = ctDestino.getSaldo()+ transf.getValor();
+            ctDestino.setSaldo(saldoFiDest);
+            transf.setContaDestino(ctDestino);
+
+        }else{
+            System.out.println("Saldo insuficiente");
+        }
 
         return tr.save(transf);
-
     }
-
 }
