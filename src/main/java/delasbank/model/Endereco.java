@@ -1,17 +1,10 @@
 package delasbank.model;
 
+
 import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Embeddable
 public class Endereco {
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEndereco;
     private String cep;
     private String rua;
     private Integer numero;
@@ -23,8 +16,8 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(Long idEndereco, String cep, String rua, Integer numero, String complemento, String bairro, String cidade, String estado) {
-        this.idEndereco = idEndereco;
+    public Endereco( String cep, String rua, Integer numero, String complemento, String bairro, String cidade, String estado) {
+
         this.cep = cep;
         this.rua = rua;
         this.numero = numero;
@@ -34,15 +27,6 @@ public class Endereco {
         this.estado = estado;
     }
 
-    public Long getIdEndereco() {
-
-        return idEndereco;
-    }
-
-    public void setIdEndereco(Long idEndereco) {
-
-        this.idEndereco = idEndereco;
-    }
 
     public String getCep() {
 
