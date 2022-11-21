@@ -47,14 +47,19 @@ public class ContaService {
         if (contaFromDb.isPresent()) {
             Conta c = contaFromDb.get();
 
-            if (conta.getNumConta() != null) {
+            if (conta.getNumConta() != null ) {
                 c.setNumConta(conta.getNumConta());
             }
-            //... checar os outros campos ......
+
+             if(conta.getAgencia() != null){
+                 c.setAgencia(conta.getAgencia());
+             }
+
             crp.save(c);
         }
         return conta;
     }
+
 
     public void deletarConta(Long id){
 
