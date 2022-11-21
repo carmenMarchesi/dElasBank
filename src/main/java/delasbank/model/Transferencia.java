@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -14,33 +13,30 @@ public class Transferencia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTransacao;
 
-//    @ManyToOne
-//    @JoinColumn(name = "idCliente")
-//    private Cliente cliente;
-    private Integer codBancoDestino;
-    private String agDestino;
-    private String contaDestino;
-    private Double valor;   // adicionar 100 reais a conta
+    private Double valor;
     private LocalDate dataTransf;
 
-    //relacionamento do transferencia com conta
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "idConta")
-    private Conta conta;
+    private Conta contaOrigem;
+
+    @JsonIgnore
+    @ManyToOne
+    private Conta contaDestino;
+
+    private Long idContaOrg;
+    private Long idContaDest;
 
     public Transferencia() {
     }
 
-    public Transferencia(Long idTransacao, Integer codBancoDestino,
-                         String agDestino, String contaDestino, Double valor, LocalDate dataTransf) {
+    public Transferencia(Long idTransacao, Double valor, LocalDate dataTransf, Conta contaOrigem, Conta contaDestino) {
         this.idTransacao = idTransacao;
-//        this.cliente = cliente;
-        this.codBancoDestino = codBancoDestino;
-        this.agDestino = agDestino;
-        this.contaDestino = contaDestino;
         this.valor = valor;
         this.dataTransf = dataTransf;
+        this.contaOrigem = contaOrigem;
+        this.contaDestino = contaDestino;
+        //this.idContaOrg = idContaOrg;
     }
 
     public Long getIdTransacao() {
@@ -53,32 +49,19 @@ public class Transferencia {
         this.idTransacao = idTransacao;
     }
 
-    public Integer getCodBancoDestino() {
-
-        return codBancoDestino;
+    public Conta getContaOrigem() {
+        return contaOrigem;
     }
 
-    public void setCodBancoDestino(Integer codBancoDestino) {
-        this.codBancoDestino = codBancoDestino;
+    public void setContaOrigem(Conta contaOrigem) {
+        this.contaOrigem = contaOrigem;
     }
 
-    public String getAgDestino() {
-
-        return agDestino;
-    }
-
-    public void setAgDestino(String agDestino) {
-
-        this.agDestino = agDestino;
-    }
-
-    public String getContaDestino() {
-
+    public Conta getContaDestino() {
         return contaDestino;
     }
 
-    public void setContaDestino(String contaDestino) {
-
+    public void setContaDestino(Conta contaDestino) {
         this.contaDestino = contaDestino;
     }
 
@@ -102,6 +85,31 @@ public class Transferencia {
         this.dataTransf = dataTransf;
     }
 
+//    public Long getIdConta() {
+//        return idContaOrg;
+//    }
+
+//    public void setIdConta(Long idConta) {
+//        this.idContaOrg = idContaOrg;
+//    }
+
+    public Long getIdContaOrg() {
+        return idContaOrg;
+    }
+
+    public void setIdContaOrg(Long idContaOrg) {
+        this.idContaOrg = idContaOrg;
+    }
+
+    public Long getIdContaDest() {
+        return idContaDest;
+    }
+
+    public void setIdContaDest(Long idContaDest) {
+        this.idContaDest = idContaDest;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -115,5 +123,3 @@ public class Transferencia {
         return Objects.hash(idTransacao);
     }
 }
-
-

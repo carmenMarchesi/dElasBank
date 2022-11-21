@@ -20,6 +20,7 @@ public class ContaController {
 
     @GetMapping("/todos")
     public ResponseEntity<List<Conta>> listarContas() {
+
         return ResponseEntity.ok(cts.listarContas());
     }
 
@@ -33,18 +34,21 @@ public class ContaController {
            }
            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
+
     }
 
     @PostMapping("/cadastrar")
     public ResponseEntity<Conta> criarConta(@RequestBody Conta conta){
 
         return ResponseEntity.ok(cts.criarConta(conta)) ;
+
     }
 
-    @PutMapping("/alterar")
+    @PutMapping("/alterar/{id}")
     public ResponseEntity<Conta> editarConta(@RequestBody Conta conta){
         return ResponseEntity.ok(cts.editarConta(conta));
     }
+
 
     @DeleteMapping("/excluir/{id}")
     public ResponseEntity <?> deletarConta(@PathVariable Long id) throws Exception{
@@ -61,6 +65,7 @@ public class ContaController {
         }
 
         return ResponseEntity.ok().build();
+
 
     }
 }
