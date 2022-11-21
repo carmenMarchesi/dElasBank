@@ -33,7 +33,7 @@ public class TransferenciaService {
 
         Conta ctOrigem = cts.dadosConta(transf.getIdContaOrg()).get();
         Double saldoFiOrig;
-        if (ctOrigem.getSaldo() > transf.getValor()){
+        if (ctOrigem.getSaldo() >= transf.getValor()){
             saldoFiOrig = ctOrigem.getSaldo()- transf.getValor();
             ctOrigem.setSaldo(saldoFiOrig);
             transf.setContaOrigem(ctOrigem);

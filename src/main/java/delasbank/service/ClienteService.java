@@ -1,6 +1,7 @@
 package delasbank.service;
 
 import delasbank.model.Cliente;
+import delasbank.model.Conta;
 import delasbank.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,30 @@ public class ClienteService {
 
     public Cliente editarCliente(Cliente cliente) {
 
-        return cr.save(cliente);
+        Optional<Cliente> op = cr.findById(cliente.getIdCliente());
+
+        if (op.isPresent()) {
+            Cliente c = op.get();
+
+            if (cliente.getNome() != null ) {
+                c.setNome(cliente.getNome());
+            }
+
+            if (cliente.getTelefone() != null ) {
+                c.setTelefone(cliente.getTelefone());
+            }
+
+            if(cliente.getEmail() != null){
+                c.setEmail(cliente.getEmail());
+            }
+
+            if(cliente.getEndereco() != null){
+                c.setEndereco(cliente.getEndereco());
+            }
+
+            cr.save(c);
+        }
+        return cliente;
+
     }
 }
