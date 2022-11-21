@@ -44,7 +44,7 @@ public class ContaController {
 
     }
 
-    @PutMapping("/alterar")
+    @PutMapping("/alterar/{id}")
     public ResponseEntity<Conta> editarConta(@RequestBody Conta conta){
         return ResponseEntity.ok(cts.editarConta(conta));
     }
