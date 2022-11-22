@@ -36,7 +36,6 @@ public class Transferencia {
         this.dataTransf = dataTransf;
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
-        //this.idContaOrg = idContaOrg;
     }
 
     public Long getIdTransacao() {
@@ -84,14 +83,6 @@ public class Transferencia {
 
         this.dataTransf = dataTransf;
     }
-
-//    public Long getIdConta() {
-//        return idContaOrg;
-//    }
-
-//    public void setIdConta(Long idConta) {
-//        this.idContaOrg = idContaOrg;
-//    }
 
     public Long getIdContaOrg() {
         return idContaOrg;

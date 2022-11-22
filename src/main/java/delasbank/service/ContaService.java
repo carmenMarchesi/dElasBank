@@ -36,10 +36,6 @@ public class ContaService {
         return crp.save(conta);
     }
 
-//    public Conta editarConta(Conta conta){
-//
-//        return crp.save(conta);
-//    }
 
     public Conta editarConta(Conta conta) {
         Optional<Conta> contaFromDb = crp.findById(conta.getIdConta());
