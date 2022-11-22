@@ -105,7 +105,7 @@ Ao abrir o projeto no IntelliJ, ir em **src** > **main** > **resources** > **"ap
 
 Ir em **src** > **main** > **java** > **delasbank** > **"Delasbank.application"** e executar o projeto.
 <br>
-Após o IntelligJ confirmar que a aplicação foi iniciada, realizar as inserções e os testes no **Postman**.
+Após o IntelliJ confirmar que a aplicação foi iniciada, realizar as inserções e os testes no **Postman**.
 
 ![Aplicação Iniciada](img/projetoIniciado.PNG)
 
