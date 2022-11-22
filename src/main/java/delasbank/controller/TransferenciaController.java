@@ -47,7 +47,7 @@ public class TransferenciaController {
             t = ts.realizarTransferencia(transferencia);
            return ResponseEntity.ok(t);
        }catch(Exception e){
-           return ResponseEntity.badRequest().body(t);
+           return new ResponseEntity("Não é possível transferir um valor maior que o seu saldo!", HttpStatus.BAD_REQUEST);
        }
 
 
