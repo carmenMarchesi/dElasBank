@@ -41,7 +41,16 @@ public class TransferenciaController {
     @PostMapping("/transferir")
     public ResponseEntity<Transferencia> realizarTransferencia(@RequestBody Transferencia transferencia) {
 
-       return ResponseEntity.ok(ts.realizarTransferencia(transferencia));
+        Transferencia t = null;
+
+        try{
+            t = ts.realizarTransferencia(transferencia);
+           return ResponseEntity.ok(t);
+       }catch(Exception e){
+           return new ResponseEntity("Não é possível transferir um valor maior que o seu saldo!", HttpStatus.BAD_REQUEST);
+       }
+
+
     }
 
 }

@@ -29,7 +29,7 @@ public class TransferenciaService {
 
 
 
-    public Transferencia realizarTransferencia(Transferencia transf) {
+    public Transferencia realizarTransferencia(Transferencia transf) throws Exception {
 
         Conta ctOrigem = cts.dadosConta(transf.getIdContaOrg()).get();
         Double saldoFiOrig;
@@ -47,9 +47,9 @@ public class TransferenciaService {
             return tr.save(transf);
 
         }else{
-            System.out.println("Saldo insuficiente");
+            throw new Exception();
         }
 
-        return transf;
+        //return transf;
     }
 }
