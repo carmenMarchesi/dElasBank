@@ -112,11 +112,6 @@ public class Conta {
         this.idCliente = idCliente;
     }
 
-//    public Cliente getCliente() {
-//
-//        return cliente;
-//    }
-
 
     public void setCliente(Cliente cliente)
     {
