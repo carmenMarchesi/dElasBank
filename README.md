@@ -159,7 +159,7 @@ GET - localhost:8080/cliente/id_cliente
 
 #### **Editar Cliente:**
 
-PUT - localhost:8080/cliente/alterar/id_cliente
+PUT - localhost:8080/cliente/alterar  
 
 Colocar os dados que deseja alterar, **lembrando que cliente só poderá alterar o nome, telefone, email e os dados de endereço**.
 
@@ -229,7 +229,7 @@ GET - localhost:8080/conta/dados/id_conta
 
 #### **Editar Conta:**
 
-PUT - localhost:8080/conta/alterar/id_conta
+PUT - localhost:8080/conta/alterar  
 
 Colocar os dados que deseja alterar, **lembrando que na conta só poderá ser alterado o número da conta e a agência**.
 
@@ -286,22 +286,39 @@ GET - localhost:8080/transferencia/listar/id_transacao
 
 <br>
 
-### 💾 5.4 Consultas no Banco
-**Mostrar informações do cliente e a sua conta:**
-```sql
-> SELECT  c.id_cliente, c.nome as Nome, c.cpf as CPF, c.dt_nascimento as "Data de Nascimento", c.sexo as Sexo, c.email as "E-mail",   
-c.telefone as Contato, c.rua as Rua, c.numero as "nº", c.complemento as Complemento, c.bairro as Bairro, c.cidade as Cidade, c.estado as Estado,  
-c.cep as CEP, ct.agencia as "Agência", ct.num_conta as Conta, ct.tipo as TipoConta, ct.cod_banco as Banco, ct.saldo as SaldoConta  
-FROM cliente c  
-INNER JOIN conta ct ON (c.id_cliente = ct.cliente_id_cliente);
-``` 
-</br>
+### 💾 5.4 Consultas no Banco  
 
+**Mostrar os dados dos Clientes:**
+```sql
+> SELECT c.id_cliente, c.nome as Nome, c.cpf as CPF, c.dt_nascimento as "Data de Nascimento", c.sexo as Sexo, c.email as "E-mail", 
+c.telefone as Contato, c.rua as Rua, c.numero as "nº", c.complemento as Complemento, c.bairro as Bairro, c.cidade as Cidade, c.estado as Estado,
+c.cep as CEP
+FROM cliente c;
+```   
+
+<br>
+
+**Mostrar os dados do cliente e a conta associada a ele:**
+```sql
+> SELECT c.id_cliente, ct.id_conta, c.nome as Nome, c.cpf as CPF, c.dt_nascimento as "Data de Nascimento", ct.num_conta as Conta, 
+ct.agencia as "Agência", ct.cod_banco as Banco, ct.tipo as TipoConta,  ct.saldo as SaldoConta
+FROM cliente c
+INNER JOIN conta ct ON (c.id_cliente = ct.cliente_id_cliente)
+ORDER BY c.id_cliente;
+``` 
+
+</br>
 
 **Mostrar as transferências realizadas:**
 ```sql
-> select id_transacao, data_transf as diaTransferencia, conta_origem_id_conta as contaOrigem, conta_destino_id_conta as 
-contaDestino, valor  from transferencia;
+> SELECT t.id_transacao, co.nome as Cliente, cto.id_conta as idContaOrigem, cto.num_conta as ContaOrigem,  t.valor as valorTransferir,  ctd.id_conta as 
+idContaDestino, cd.nome as ClienteDestino, ctd.num_conta as ContaDestino, t.data_transf as dataTransferencia
+FROM transferencia t
+INNER JOIN conta cto ON (cto.cliente_id_cliente = t.id_conta_org)
+INNER JOIN conta ctd ON (ctd.cliente_id_cliente = t.id_conta_dest)
+INNER JOIN cliente co ON (co.id_cliente = cto.id_cliente)
+INNER JOIN cliente cd ON (cd.id_cliente = ctd.id_cliente)
+ORDER BY Cliente;
 ``` 
 </br>
 

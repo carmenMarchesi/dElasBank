@@ -45,7 +45,7 @@ public class ClienteController {
 
     }
 
-    @PutMapping("/alterar/{id}")
+    @PutMapping("/alterar")
     public ResponseEntity<Cliente> editarCliente(@RequestBody Cliente cliente){
 
         return ResponseEntity.ok(cs.editarCliente(cliente));
