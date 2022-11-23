@@ -22,6 +22,7 @@ public class Cliente {
     private LocalDate dtNascimento;
     private String sexo;
     private String cpf;
+    @Schema (example = "Exemple@xmail.com")
     private String email;
     @Embedded
     private Endereco endereco;
